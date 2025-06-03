@@ -1,6 +1,6 @@
 mod mod1;
 
-use mod1::{fizz_buzz, greet, is_prime, longest_word, max_value, pairs};
+use mod1::{anagram, fizz_buzz, greet, is_prime, longest_word, max_value, pairs};
 
 fn main() {
     //let var = greet("Sai Katterishetty");
@@ -9,14 +9,16 @@ fn main() {
     //let var = is_prime(31);
     //let var = fizz_buzz(20);
 
-    let var = pairs(&[
-        "cherry",
-        "cranberry",
-        "banana",
-        "blueberry",
-        "lime",
-        "papaya",
-    ]);
+    // let var = pairs(&[
+    //     "cherry",
+    //     "cranberry",
+    //     "banana",
+    //     "blueberry",
+    //     "lime",
+    //     "papaya",
+    // ]);
+
+    let var = anagram("tax", "taxi");
 
     println!("output {:?}", var);
 }

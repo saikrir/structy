@@ -1,4 +1,4 @@
-use std::i64::MAX;
+use std::{collections::HashMap, i64::MAX, iter::Map};
 
 pub fn greet(name: &str) -> String {
     format!("hey {}", name)
@@ -68,4 +68,32 @@ pub fn pairs<'a>(input: &[&'a str]) -> Vec<(&'a str, &'a str)> {
         }
     }
     ret
+}
+
+fn freq_map(word: &str) -> HashMap<char, i16> {
+    let mut freq_map = HashMap::new();
+    for ch in word.chars() {
+        let freq_val = freq_map.entry(ch).or_insert(0);
+        *freq_val = *freq_val + 1;
+    }
+    freq_map
+}
+
+fn compare_maps(map1: HashMap<char, i16>, map2: HashMap<char, i16>) -> bool {
+    if map1.len() != map2.len() {
+        return false;
+    }
+    for (k, v) in map1 {
+        if !match map2.get(&k) {
+            Some(&v2) => v2 == v,
+            None => false,
+        } {
+            return false;
+        }
+    }
+    true
+}
+
+pub fn anagram(word1: &str, word2: &str) -> bool {
+    compare_maps(freq_map(word1), freq_map(word2))
 }
