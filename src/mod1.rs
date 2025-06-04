@@ -94,6 +94,18 @@ fn compare_maps(map1: HashMap<char, i16>, map2: HashMap<char, i16>) -> bool {
     true
 }
 
+pub fn most_frequent_char(some_str: &str) -> char {
+    let f_map = freq_map(some_str);
+
+    let mut m_char = '\0';
+    for ch in some_str.chars() {
+        if m_char == '\0' || f_map.get(&ch).unwrap() > f_map.get(&m_char).unwrap() {
+            m_char = ch;
+        }
+    }
+    m_char
+}
+
 pub fn anagram(word1: &str, word2: &str) -> bool {
     compare_maps(freq_map(word1), freq_map(word2))
 }

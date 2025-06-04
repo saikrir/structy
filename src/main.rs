@@ -1,6 +1,8 @@
 mod mod1;
 
-use mod1::{anagram, fizz_buzz, greet, is_prime, longest_word, max_value, pairs};
+use mod1::{
+    anagram, fizz_buzz, greet, is_prime, longest_word, max_value, most_frequent_char, pairs,
+};
 
 fn main() {
     //let var = greet("Sai Katterishetty");
@@ -13,12 +15,12 @@ fn main() {
     //     "cherry",
     //     "cranberry",
     //     "banana",
-    //     "blueberry",
+    //     "blueberry
     //     "lime",
     //     "papaya",
     // ]);
 
-    let var = anagram("tax", "taxi");
+    let var = most_frequent_char("mississippi");
 
     println!("output {:?}", var);
 }
