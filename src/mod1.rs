@@ -1,4 +1,4 @@
-use std::{collections::HashMap, i64::MAX, iter::Map};
+use std::{collections::HashMap, i64::MAX};
 
 pub fn greet(name: &str) -> String {
     format!("hey {}", name)
@@ -108,4 +108,36 @@ pub fn most_frequent_char(some_str: &str) -> char {
 
 pub fn anagram(word1: &str, word2: &str) -> bool {
     compare_maps(freq_map(word1), freq_map(word2))
+}
+
+pub fn pair_sum(numbers: &[i32], target: i32) -> Option<(usize, usize)> {
+    let mut inverted_index: HashMap<i32, usize> = HashMap::new();
+
+    for (idx, num) in numbers.iter().enumerate() {
+        let req = target - num;
+
+        if inverted_index.contains_key(&req) {
+            return Some((*inverted_index.get(&req).unwrap(), idx));
+        }
+        inverted_index.insert(*num, idx);
+    }
+    None
+}
+
+pub fn pair_product(numbers: &[i32], target: i32) -> Option<(usize, usize)> {
+    let mut inverted_index: HashMap<i32, usize> = HashMap::new();
+
+    for (idx, num) in numbers.iter().enumerate() {
+        if target % *num != 0 {
+            continue;
+        }
+
+        let req = target / num;
+
+        if inverted_index.contains_key(&req) {
+            return Some((*inverted_index.get(&req).unwrap(), idx));
+        }
+        inverted_index.insert(*num, idx);
+    }
+    None
 }

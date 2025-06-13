@@ -4,6 +4,8 @@ use mod1::{
     anagram, fizz_buzz, greet, is_prime, longest_word, max_value, most_frequent_char, pairs,
 };
 
+use crate::mod1::{pair_product, pair_sum};
+
 fn main() {
     //let var = greet("Sai Katterishetty");
     //let var = max_value(&[-5, -2, -1, -11]);
@@ -20,7 +22,8 @@ fn main() {
     //     "papaya",
     // ]);
 
-    let var = most_frequent_char("mississippi");
+    //let var = most_frequent_char("mississippi");
+    let var = pair_product(&[4, 6, 8, 2], 16);
 
     println!("output {:?}", var);
 }
