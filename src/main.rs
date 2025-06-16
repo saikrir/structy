@@ -5,7 +5,7 @@ use mod1::{
     pairs,
 };
 
-use crate::mod1::{pair_product, pair_sum};
+use crate::mod1::{pair_product, pair_sum, xor};
 
 fn main() {
     //let var = greet("Sai Katterishetty");
@@ -25,7 +25,7 @@ fn main() {
 
     //let var = most_frequent_char("mississippi");
     //let var = pair_product(&[4, 6, 8, 2], 16);
-    let var = intersection(&[0, 1, 2], &[10, 11]);
+    let var = xor(&[4, 2, 1, 6], &[3, 6, 9, 2, 10]);
 
     println!("output {:?}", var);
 }

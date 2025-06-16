@@ -153,3 +153,24 @@ pub fn intersection(numbersA: &[i32], numbersB: &[i32]) -> Vec<i32> {
         .copied()
         .collect()
 }
+
+pub fn xor(numbersA: &[i32], numbersB: &[i32]) -> Vec<i32> {
+    let a_set: HashSet<i32> = numbersA.iter().copied().collect();
+    let b_set: HashSet<i32> = numbersB.iter().copied().collect();
+
+    let mut final_vec = Vec::new();
+
+    for n in numbersA {
+        if !b_set.contains(n) {
+            final_vec.push(*n);
+        }
+    }
+
+    for n in numbersB {
+        if !a_set.contains(n) {
+            final_vec.push(*n);
+        }
+    }
+
+    final_vec
+}
