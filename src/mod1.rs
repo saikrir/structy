@@ -1,4 +1,7 @@
-use std::{collections::HashMap, i64::MAX};
+use std::{
+    collections::{HashMap, HashSet},
+    i64::MAX,
+};
 
 pub fn greet(name: &str) -> String {
     format!("hey {}", name)
@@ -140,4 +143,13 @@ pub fn pair_product(numbers: &[i32], target: i32) -> Option<(usize, usize)> {
         inverted_index.insert(*num, idx);
     }
     None
+}
+
+pub fn intersection(numbersA: &[i32], numbersB: &[i32]) -> Vec<i32> {
+    let n_set: HashSet<i32> = numbersA.iter().copied().collect();
+    numbersB
+        .iter()
+        .filter(|v| n_set.contains(*v))
+        .copied()
+        .collect()
 }

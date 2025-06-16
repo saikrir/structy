@@ -1,7 +1,8 @@
 mod mod1;
 
 use mod1::{
-    anagram, fizz_buzz, greet, is_prime, longest_word, max_value, most_frequent_char, pairs,
+    anagram, fizz_buzz, greet, intersection, is_prime, longest_word, max_value, most_frequent_char,
+    pairs,
 };
 
 use crate::mod1::{pair_product, pair_sum};
@@ -23,7 +24,8 @@ fn main() {
     // ]);
 
     //let var = most_frequent_char("mississippi");
-    let var = pair_product(&[4, 6, 8, 2], 16);
+    //let var = pair_product(&[4, 6, 8, 2], 16);
+    let var = intersection(&[0, 1, 2], &[10, 11]);
 
     println!("output {:?}", var);
 }
