@@ -1,4 +1,5 @@
 use std::{
+    cmp::{self, min},
     collections::{HashMap, HashSet},
     i64::MAX,
 };
@@ -173,4 +174,35 @@ pub fn xor(numbersA: &[i32], numbersB: &[i32]) -> Vec<i32> {
     }
 
     final_vec
+}
+
+pub fn all_unique(items: &[&str]) -> bool {
+    let item_set: HashSet<&&str> = items.iter().collect();
+    item_set.len() == items.len()
+}
+
+pub fn intersection_with_dupes(list_a: &[&str], list_b: &[&str]) -> Vec<String> {
+    let map_a: HashMap<&str, u8> = inverted_index(list_a);
+    let map_b: HashMap<&str, u8> = inverted_index(list_b);
+    let mut ret = Vec::new();
+
+    for (k, v) in map_a {
+        if let Some(cnt) = map_b.get(k) {
+            for _ in 0..min(v, *cnt) {
+                ret.push(k.to_owned());
+            }
+        }
+    }
+
+    ret
+}
+
+fn inverted_index<'a>(items: &[&'a str]) -> HashMap<&'a str, u8> {
+    let mut ii_map = HashMap::<&str, u8>::new();
+
+    for item in items {
+        let v = ii_map.entry(item).or_insert(0);
+        *v += 1;
+    }
+    ii_map
 }
